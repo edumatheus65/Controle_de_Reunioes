@@ -1,6 +1,7 @@
 <?php
 
 require 'config.php';
+require 'classes/reservas.'
 
 ?>
 
