@@ -1,6 +1,35 @@
 <?php
 
-session_start()
+session_start();
+
+
+
+
+if(isset($_POST['email']) && empty($_POST['email']) ) {
+    $email = $_POST['email'];
+    $senha = $_POST['password'];
+
+    
+    
+    
+    
+    $stmt = $conn->query("SELECT * FROM reservas WHERE email = '$email' AND senha = '$senha'");
+
+    if($stmt->rowCount() > 0) {
+        
+        $dado = $stmt->fetch();
+
+        $_SESSION['id'] = $dado['id'];
+
+        header("Location: index.php");
+
+        
+
+    } 
+
+
+
+}
 
 
 
@@ -31,7 +60,7 @@ session_start()
     <div class="row align-items-center gx-5">
         <div class="col-md-6 order-md-2">
             <h2 class="title">CONTROLE DE REUNIÕES</h2>
-            <form method="GET">
+            <form method="POST">
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="email" name="email"
                     placeholder="Digite seu email">
