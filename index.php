@@ -22,10 +22,16 @@ if(isset($_SESSION['id']) && empty($_SESSION['id']) == false) {
 <?php
 
 
+
+
 require 'config.php';
 require 'classes/reservas.class.php';
 
 
+if(isset($_SESSION['msg'])) {
+    $printMSG = $_SESSION['msg'];
+    $_SESSION['msg'] = '';
+  }
 
 
 
@@ -56,13 +62,13 @@ $reservas = new Reservas($conn);
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="./index.php">
                 <img src="./source/img/logo.svg" alt="Agenda">
             </a>
             <div>       
                 <div class="navbar-nav">
-                    <a href="nav-link active" id="home-link" href="index.php">Agenda</a>
-                    <a href="nav-link active" href="reservar.php">Adicionar Reserva</a>
+                    <a class="nav-link active" id="home-link" href='index.php'>Agenda </a>
+                    <a class="nav-link active" id="home-link" href="reservar.php"> Adicionar Reserva</a>
                 </div>
             </div>
         </nav>

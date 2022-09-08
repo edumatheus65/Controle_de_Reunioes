@@ -7,6 +7,34 @@ body {
     width: 50px;
 }
 
+#main-title {
+    text-align: center;
+    margin: 15px 0 30px;
+}
+
+/* HOME */
+
+#contacts-table {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#contacts-table thead {
+    color: #FFF;
+    background-color: #007BFF;
+}
+
+.col-id {
+    font-weight: bold;
+}
+
+.actions {
+    text-align: right;
+    width: 150px;
+}
+
+
+
 
 
 /* [FORM] */
