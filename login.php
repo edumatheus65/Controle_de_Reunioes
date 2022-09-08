@@ -2,18 +2,22 @@
 
 session_start();
 
+require("config.php");
 
 
 
-if(isset($_POST['email']) && empty($_POST['email']) ) {
+
+if(isset($_POST['email']) && empty($_POST['email']) == false) {
     $email = $_POST['email'];
-    $senha = $_POST['password'];
+    $senha = md5($_POST['password']);  
+
+    
 
     
     
     
     
-    $stmt = $conn->query("SELECT * FROM reservas WHERE email = '$email' AND senha = '$senha'");
+    $stmt = $conn->query("SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'");
 
     if($stmt->rowCount() > 0) {
         
@@ -21,8 +25,8 @@ if(isset($_POST['email']) && empty($_POST['email']) ) {
 
         $_SESSION['id'] = $dado['id'];
 
-        header("Location: index.php");
-
+        header("location: index.php");
+        
         
 
     } 
