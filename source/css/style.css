@@ -3,6 +3,12 @@ body {
     
 }
 
+.navbar-brand img {
+    width: 50px;
+}
+
+
+
 /* [FORM] */
 #form-container {
     background-color: #fff;
