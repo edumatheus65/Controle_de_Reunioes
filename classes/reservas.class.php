@@ -7,7 +7,7 @@
         public function __construct($conn) {
         $this->conn = $conn;
 
-    }
+        }
         
         public function getReservas() {
             $array = array();
@@ -21,6 +21,8 @@
 
             return $array;
         }
+        
+        public function verificarDisponibilidade($data_inicio, $horario_inicio, $horario_de_fim)
     }
 
 ?>
