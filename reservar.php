@@ -10,18 +10,25 @@ $reservas = new Reservas($conn);
 
 
 
-if(!empty($_POST['name'])) {
-    $pessoa = $_POST['pessoa'];
-    $email = $_POST['email'];
+if(!empty($_POST['pessoa'])) {
+    $pessoa = $_POST['pessoa'];    
     $data_inicio = explode('/', $_POST['data_inicio']);
     $horario_inicio = $_POST['horario_inicio'];
     $horario_de_fim = $_POST['horario_de_fim'];
 
     $data_inicio = $data_inicio[2] . '-' . $data_inicio[1] . '-' . $data_inicio[0];
 
+     print_r($data_inicio);
+     print_r($horario_inicio);
+     print_r($horario_de_fim);
+   
+    
+
     if($reservas->verificarDisponibilidade($data_inicio, $horario_inicio, $horario_de_fim)) {
         
-        $reservas->reservar($data_inicio, $horario_inicio, $horario_de_fim, $pessoa, $email);
+        $reservas->reservar($pessoa, $data_inicio, $horario_inicio, $horario_de_fim);
+
+        header("Location: index.php");
 
     } else {
         echo "Este horário já está reservado neste período";
@@ -66,27 +73,27 @@ if(!empty($_POST['name'])) {
         <form id="creat-form" method="POST" action="">
             <input type="hidden" name="type" value="creat" >
             <div class="form-group">
-                <label for="name">Nome do Reservante</label>
-                <input type="text" class="form-control" placeholder="Digite o nome do reservante">
+                <label for="">Nome do Reservante</label>
+                <input type="text" class="form-control" placeholder="Digite o nome do reservante" name="pessoa">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="email">Digite seu email</label>
                 <input type="email" class="form-control" placeholder="Digite o email do reservante">
-            </div>
+            </div> -->
             <div class="form-group">
                 <label for="date">Digite a data desejada</label>
-                <input type="date" class="form-control">
+                <input type="text" class="form-control" name="data_inicio">
             </div>
             <div class="form-group">
                 <label for="time_start">Horario de Inicio</label>
-                <input type="time" class="form-control">
+                <input type="text" class="form-control" name="horario_inicio">
             </div>
             <div class="form-group">
                 <label for="time_end">Horario de Fim</label>
-                <input type="time" class="form-control">
+                <input type="text" class="form-control" name="horario_de_fim">
             </div>
             <div>
-                <input type="text" class="btn btn-primary" value="Reservar">
+                <input type="submit" class="btn btn-primary" value="Reservar">
             </div>
 
 
